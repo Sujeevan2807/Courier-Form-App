@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form Validation</title>
+    <link rel="stylesheet" href="./assets/css/main.css" />
+  </head>
+  <body class="bg-indigo-300">
+    <div class="max-w-xl mx-auto bg-white rounded m-10 py-10">
+      <h2 class="font-semibold text-lg px-5">Courier Form</h2>
+      <form action="" method="post" id="courier-form">
+        <div class="grid grid-cols-2 gap-x-3 px-5 my-5">
+          <input
+            class="form-input-style"
+            type="text"
+            placeholder="Your Name"
+            name="name"
+            id="nameInput"
+            required
+          />
+          <input
+            class="form-input-style"
+            type="text"
+            placeholder="Contact Number"
+            name="number"
+            id="numberInput"
+            required
+          />
+        </div>
+        <div class="px-5 my-5 space-y-3">
+          <input
+            class="form-input-style"
+            type="datetime-local"
+            placeholder="Date"
+            name="date"
+            id="dateInput"
+            required
+          />
+        </div>
+        <div class="px-5 space-y-3 my-5">
+          <textarea
+            class="form-input-style"
+            placeholder="Address"
+            name="address"
+            cols="4"
+            rows="3"
+            id="addressInput"
+          ></textarea>
+        </div>
+        <div class="text-center px-5">
+          <button
+            class="w-full bg-green-400 text-white py-2 font-semibold hover:bg-green-500 rounded"
+            type="submit"
+          >
+            Submit
+          </button>
+        </div>
+      </form>
+    </div>
+    <div class="max-w-6xl mx-auto p-5 bg-white rounded hidden" id="tableCard">
+      <h2 class="font-semibold text-lg px-5">Result Table</h2>
+      <table class="table table-fixed border w-full text-center" id="courier-data-table">
+        <tr>
+          <th class="table-row-style">Name</th>
+          <th class="table-row-style">Number</th>
+          <th class="table-row-style">Date</th>
+          <th class="table-row-style">Address</th>
+          <th class="table-row-style"></th>
+        </tr>
+        <!-- <tr>
+          <td class="table-row-style">Name</td>
+          <td class="table-row-style">Number</td>
+          <td class="table-row-style">Date</td>
+          <td class="table-row-style">Address</td>
+          <td class="table-row-style">
+            <button
+              type="button"
+              class="px-2 py-1 bg-red-500 text-white text-sm rounded hover:bg-red-600"
+            >
+              Delete
+            </button>
+          </td>
+        </tr> -->
+      </table>
+    </div>
+    
+    <script type="module" src="./assets/js/main.js"></script>
+  </body>
+</html>
