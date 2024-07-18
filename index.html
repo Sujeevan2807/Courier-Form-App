@@ -59,16 +59,21 @@
         </div>
       </form>
     </div>
-    <div class="max-w-6xl mx-auto p-5 bg-white rounded hidden" id="tableCard">
-      <h2 class="font-semibold text-lg px-5">Result Table</h2>
-      <table class="table table-fixed border w-full text-center" id="courier-data-table">
+    <div class="max-w-7xl mx-auto p-5 bg-white rounded hidden" id="tableCard">
+      <div class="flex items-center space-x-1">
+        <h2 class="font-semibold text-lg ">Result Table</h2>
+        <span class="bg-green-600 text-white text-sm rounded-full w-6 h-6 text-center py-0.5" id="courierDataCount"></span>
+      </div>
+      <table class="table table-fixed border w-full text-center">
         <tr>
+          <th class="table-row-style w-14">Num</th>
           <th class="table-row-style">Name</th>
-          <th class="table-row-style">Number</th>
+          <th class="table-row-style">Contact Number</th>
           <th class="table-row-style">Date</th>
           <th class="table-row-style">Address</th>
           <th class="table-row-style"></th>
         </tr>
+        <tbody id="courier-data-table"></tbody>
         <!-- <tr>
           <td class="table-row-style">Name</td>
           <td class="table-row-style">Number</td>

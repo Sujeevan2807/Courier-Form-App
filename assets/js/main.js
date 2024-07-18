@@ -2,7 +2,8 @@ import JustValidate from "just-validate";
 import { rule } from "postcss";
 import * as myDay from "dayjs";
 import dayjs from "dayjs";
-import {formatMyDate} from "./utils"
+import {formatMyDate} from "./utils";
+import { v4 as uuidv4 } from 'uuid';
 
 const formEl = document.querySelector("#courier-form");
 
@@ -75,14 +76,17 @@ validate
 
 validate.onSuccess(() => {
   const formData = new FormData(formEl);
+  const getLocalStorageData = localStorage.getItem(localStorageKey);
 
+  const formEntryDataObj = JSON.parse(getLocalStorageData);
+
+  formData.append("ID", uuidv4())
+  formData.append("Created At", Date.now())
   const formEntriesData = Object.fromEntries(formData.entries());
 
   const formEntryDataArray = [];
 
-  const getLocalStorageData = localStorage.getItem(localStorageKey);
 
-  const formEntryDataObj = JSON.parse(getLocalStorageData);
 
   if (formEntryDataObj) {
     formEntryDataObj.push(formEntriesData);
@@ -92,6 +96,7 @@ validate.onSuccess(() => {
     localStorage.setItem(localStorageKey, JSON.stringify(formEntryDataArray));
   }
   alert("Form submited succesfully");
+  getAllCourierData();
   formEl.reset();
 });
 
@@ -104,12 +109,14 @@ function getAllCourierData() {
     const tableCardEl = document.querySelector("#tableCard");
 
     tableCardEl.classList.remove("hidden");
+    
     const dataTableEl = document.querySelector("#courier-data-table");
+    dataTableEl.innerHTML = "";
 
-    const finalData = courierDataArr
-      .map((courierData) => {
+    const finalData = courierDataArr.map((courierData, index) => {
         return `
             <tr>
+                <td class="table-row-style">${index + 1}</td>
                 <td class="table-row-style">${courierData.name}</td>
                 <td class="table-row-style">${courierData.number}</td>
                 <td class="table-row-style">${formatMyDate(courierData.date)}</td>
@@ -125,10 +132,14 @@ function getAllCourierData() {
       })
       .join(" ");
     dataTableEl.innerHTML += finalData;
+  
+    const courierDataCountEl = document.querySelector("#courierDataCount")
+    courierDataCountEl.textContent = courierDataArr.length
   } else {
     console.log("No Values in Local Storage");
   }
 }
 
 getAllCourierData();
+
 
