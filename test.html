@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta property="og:title" content="Courier app to track your request" />
+    <meta
+      property="og:description"
+      content="Track all your courier request in one place. Just try it!"
+    />
+    <meta
+      property="og:image"
+      content="https://cdn.pixabay.com/photo/2016/02/21/20/24/courier-1214227_1280.jpg"
+    />
+
+    <title>Courier Request Form</title>
+
+    <link rel="stylesheet" href="./assets/css/main.css" />
+  </head>
+  <body>
+    <div class="bg-indigo-900 min-h-screen p-10">
+      <div class="bg-white rounded p-5 max-w-xl mx-auto">
+        <h4 class="font-semibold text-xl">Request a Courier Pickup!</h4>
+        <form id="courier-request-form" class="my-5 space-y-5" method="post">
+          <div class="grid grid-cols-2 gap-x-5">
+            <input
+              type="text"
+              id="name"
+              class="form-input"
+              placeholder="Name"
+              name="name"
+              required
+            />
+            <input
+              type="text"
+              id="mobile-no"
+              name="mobile"
+              class="form-input"
+              placeholder="Mobile Number"
+              value="9876543211"
+              required
+            />
+          </div>
+          <div>
+            <input
+              type="datetime-local"
+              name="pickup-date"
+              id="pickup-date"
+              class="form-input"
+              placeholder="Pickup Date"
+              required
+            />
+          </div>
+          <div>
+            <textarea
+              name="pickup-area"
+              id="pickup-area"
+              class="form-input"
+              cols="30"
+              rows="4"
+              placeholder="Enter your pickup address"
+              required
+            ></textarea>
+          </div>
+          <div>
+            <label for="agreements">
+              <input
+                type="checkbox"
+                name="agreements"
+                id="agreements"
+                required
+              />
+              I accept all terms and conditions.
+            </label>
+          </div>
+          <button
+            type="submit"
+            class="px-3 py-1 rounded bg-indigo-500 text-white w-full hover:bg-indigo-600"
+          >
+            Create Pickup
+          </button>
+        </form>
+      </div>
+      <div
+        class="bg-white rounded p-5 max-w-6xl mx-auto mt-10 hidden"
+        id="courierCard"
+      >
+        <div class="flex items-center space-x-2">
+          <h4 class="font-semibold text-xl">Courier Requests</h4>
+          <span
+            class="px-2 py-0.5 bg-green-500 rounded-full font-semibold text-white text-sm"
+            id="courierCount"
+          >
+            12
+          </span>
+        </div>
+        <div class="my-5 space-y-5">
+          <table class="table table-fixed border w-full text-center">
+            <tr>
+              <th class="px-2 py-1 border w-14">C.No</th>
+              <th class="px-2 py-1 border">Customer</th>
+              <th class="px-2 py-1 border">Mobile</th>
+              <th class="px-2 py-1 border">Pickup Date</th>
+              <th class="px-2 py-1 border">Address</th>
+              <th class="px-2 py-1 border w-20"></th>
+            </tr>
+            <tbody id="courierDataTable"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="./assets/js/utils.js"></script>
+    <script type="module" src="./assets/js/main.js"></script>
+  </body>
+</html>
